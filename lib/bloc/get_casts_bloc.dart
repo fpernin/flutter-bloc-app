@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutterblocapp/models/movie_response.dart';
+import 'package:flutterblocapp/models/cast_response.dart';
 import 'package:flutterblocapp/repository/repository.dart';
 import 'package:rxdart/rxdart.dart';
 
-class MoviesListByGenreBloc {
+class CastsListBloc {
   final MovieRepository _repository = MovieRepository();
-  final BehaviorSubject<MovieResponse> _subject = BehaviorSubject();
+  final BehaviorSubject<CastResponse> _subject = BehaviorSubject();
 
-  getMoviesByGenre(int id) async {
-    MovieResponse response = await _repository.getMovieByGenre(id);
+  getCast(int id) async {
+    CastResponse response = await _repository.getCasts(id);
     _subject.sink.add(response);
   }
 
@@ -22,7 +22,7 @@ class MoviesListByGenreBloc {
     _subject.close();
   }
 
-  BehaviorSubject<MovieResponse> get subject => _subject;
+  BehaviorSubject<CastResponse> get subject => _subject;
 }
 
-final moviesByGenreBloc = MoviesListByGenreBloc();
+final castsBloc = CastsListBloc();

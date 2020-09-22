@@ -19,7 +19,7 @@ class _GenresWidgetState extends State<GenresWidget> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<GenreResponse>(
-      stream: genresBloc.subjet.stream,
+      stream: genresBloc.subject.stream,
       builder: (context, AsyncSnapshot<GenreResponse> snapshot) {
         if (snapshot.hasData) {
           if (snapshot.data.error != null && snapshot.data.error.length > 0) {
@@ -67,7 +67,7 @@ class _GenresWidgetState extends State<GenresWidget> {
 
     if (genres.length == 0) {
       return Container(
-        child: Text('No Genre'),
+        child: Text("No Genre"),
       );
     } else
       return GenresList(genres: genres);

@@ -21,7 +21,7 @@ class _NowPlayingState extends State<NowPlaying> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<MovieResponse>(
-      stream: nowPlayingMoviesBloc.subjet.stream,
+      stream: nowPlayingMoviesBloc.subject.stream,
       builder: (context, AsyncSnapshot<MovieResponse> snapshot) {
         if (snapshot.hasData) {
           if (snapshot.data.error != null && snapshot.data.error.length > 0) {

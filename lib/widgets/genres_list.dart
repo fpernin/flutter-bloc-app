@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterblocapp/models/genre.dart';
+import 'package:flutterblocapp/widgets/genre_movies.dart';
 import 'package:flutterblocapp/style/theme.dart' as Style;
 
 class GenresList extends StatefulWidget {
@@ -65,7 +66,9 @@ class _GenresListState extends State<GenresList> with TickerProviderStateMixin {
           body: TabBarView(
             controller: _tabController,
             physics: NeverScrollableScrollPhysics(),
-            children: null,
+            children: genres
+                .map((Genre genre) => GenreMovies(genreId: genre.id))
+                .toList(),
           ),
           backgroundColor: Style.Colors.mainColor,
         ),

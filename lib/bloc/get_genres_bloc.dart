@@ -15,7 +15,7 @@ class GenresListBloc {
     _subject.close();
   }
 
-  BehaviorSubject<GenreResponse> get subjet => _subject;
+  BehaviorSubject<GenreResponse> get subject => _subject;
 }
 
 final genresBloc = GenresListBloc();

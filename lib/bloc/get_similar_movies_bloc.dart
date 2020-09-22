@@ -1,21 +1,28 @@
+import 'package:flutter/material.dart';
 import 'package:flutterblocapp/models/movie_response.dart';
 import 'package:flutterblocapp/repository/repository.dart';
 import 'package:rxdart/rxdart.dart';
 
-class NowPlayingListBloc {
+class SimilarMoviesBloc {
   final MovieRepository _repository = MovieRepository();
   final BehaviorSubject<MovieResponse> _subject = BehaviorSubject();
 
-  getMovies() async {
-    MovieResponse response = await _repository.getPlayingMovies();
+  getSimilarMovies(int id) async {
+    MovieResponse response = await _repository.getSimilarMovies(id);
     _subject.sink.add(response);
   }
 
-  dispose() {
+  void drainStream() {
+    _subject.value = null;
+  }
+
+  @mustCallSuper
+  void dispose() async {
+    await _subject.drain();
     _subject.close();
   }
 
   BehaviorSubject<MovieResponse> get subject => _subject;
 }
 
-final nowPlayingMoviesBloc = NowPlayingListBloc();
+final similarMoviesBloc = SimilarMoviesBloc();

@@ -15,7 +15,7 @@ class MoviesListBloc {
     _subject.close();
   }
 
-  BehaviorSubject<MovieResponse> get subjet => _subject;
+  BehaviorSubject<MovieResponse> get subject => _subject;
 }
 
 final moviesBloc = MoviesListBloc();

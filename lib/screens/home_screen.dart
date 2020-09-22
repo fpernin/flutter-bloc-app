@@ -1,8 +1,10 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterblocapp/style/theme.dart' as Style;
 import 'package:flutterblocapp/widgets/genres.dart';
 import 'package:flutterblocapp/widgets/now_playing.dart';
+import 'package:flutterblocapp/widgets/persons.dart';
+import 'package:flutterblocapp/widgets/top_movies.dart';
+import 'package:flutterblocapp/style/theme.dart' as Style;
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -32,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: ListView(
-        children: [NowPlaying(), GenresWidget()],
+        children: [NowPlaying(), GenresWidget(), PersonsList(), TopMovies()],
       ),
     );
   }
